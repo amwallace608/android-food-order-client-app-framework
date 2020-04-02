@@ -22,6 +22,7 @@ import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 public class FoodList extends AppCompatActivity {
@@ -60,10 +61,11 @@ public class FoodList extends AppCompatActivity {
 
     private void loadListFood(String categoryId){
         //select all foods with MenuId = categoryId
-        foodList.orderByChild("MenuId").equalTo(categoryId);
+        //foodList.orderByChild("MenuId").equalTo(categoryId);
+        Query query = foodList.orderByChild("MenuID").equalTo(categoryId);
         //prepare Firebase options
         options = new FirebaseRecyclerOptions.Builder<Food>().
-                setQuery(foodList, Food.class).build();
+                setQuery(query, Food.class).build();
         //set up adapter
         adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(options) {
             @Override
