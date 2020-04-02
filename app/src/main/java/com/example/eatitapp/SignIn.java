@@ -52,6 +52,8 @@ public class SignIn extends AppCompatActivity {
                             //Get User information w/ dataSnapshot of input
                             User user = dataSnapshot.child
                                     (phoneEditText.getText().toString()).getValue(User.class);
+                            //get user phone number
+                            user.setPhone(phoneEditText.getText().toString());
                             if (user.getPassword().equals(passwordEditText.getText().toString())) {
                                 /*show sign in success message if password matches
                                 Toast.makeText(SignIn.this, "Success!",

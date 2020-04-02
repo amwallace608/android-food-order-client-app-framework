@@ -43,6 +43,8 @@ dependencies {
     implementation 'com.github.jd-alexander:android-flat-button:v1.1'
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
 
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     implementation 'com.cepheuen.elegant-number-button:lib:1.0.2'
     implementation 'com.android.support:design:28.+'
     implementation 'com.android.support:recyclerview-v7:28.+'

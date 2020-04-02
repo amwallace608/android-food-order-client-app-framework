@@ -3,6 +3,7 @@ package com.example.eatitapp.Model;
 public class User {
     private String Name;
     private String Password;
+    private String Phone;
 
     public User(){
 
@@ -29,4 +30,9 @@ public class User {
         Password = password;
     }
 
+    public void setPhone(String phone){Phone = phone;}
+
+    public String getPhone() {
+        return Phone;
+    }
 }
