@@ -3,6 +3,7 @@ package com.example.eatitapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -76,7 +78,7 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -87,6 +89,36 @@ public class Home extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
        NavigationUI.setupWithNavController(navigationView, navController);
+
+       navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+           @Override
+           public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+               int id = item.getItemId();
+
+               if(id == R.id.nav_menu){
+
+               }
+               else if(id == R.id.nav_cart){
+                   //view cart
+                   Intent cartIntent = new Intent(Home.this,Cart.class);
+                   startActivity(cartIntent);
+               }
+               else if(id == R.id.nav_orders){
+                   //orders page
+                   Intent orderStatusIntent = new Intent(Home.this, OrderStatus.class);
+                   startActivity(orderStatusIntent);
+               }
+               else if(id == R.id.nav_sign_out){
+                   //Logout/return to login page
+                   Intent signIn = new Intent(Home.this, SignIn.class);
+                   signIn.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                   startActivity(signIn);
+               }
+               drawer.closeDrawer(GravityCompat.START);
+               return true;
+           }
+       });
+
         //Set Name for current user
         View headerView = navigationView.getHeaderView(0);
         fullNameTextView = (TextView) headerView.findViewById(R.id.fullNameTextView);
