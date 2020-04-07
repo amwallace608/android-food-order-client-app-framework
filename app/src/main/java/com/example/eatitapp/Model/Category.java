@@ -1,23 +1,23 @@
 package com.example.eatitapp.Model;
 
 public class Category {
-    private String Name;
-    private String Image;
+    private String name;
+    private String image;
 
     public Category(){
 
     }
 
     public Category(String name, String image) {
-        Name = name;
-        Image = image;
+        this.name = name;
+        this.image = image;
     }
 
     public String getImage() {
-        return Image;
+        return image;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 }
